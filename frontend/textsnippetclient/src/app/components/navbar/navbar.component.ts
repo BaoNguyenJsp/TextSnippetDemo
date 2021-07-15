@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {Location} from '@angular/common';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { Dispatcher } from 'app/state/dispatcher';
+import { LoginAction } from 'app/state/app.action';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +17,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     query = "";
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,  private element: ElementRef, private router: Router, private dispatcher: Dispatcher) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -34,6 +36,19 @@ export class NavbarComponent implements OnInit {
     }
 
     switchRole(role: string) {
+        if (role == 'User') {
+            var person = {
+                userName: 'system@test.com',
+                password: 'userpaswword'
+            }
+            this.dispatcher.fire(new LoginAction(person));
+        } else {
+            var person = {
+                userName: 'admin@test.com',
+                password: 'adminpaswword'
+            }
+            this.dispatcher.fire(new LoginAction(person));
+        }
     }
 
     sidebarOpen() {
@@ -112,16 +127,6 @@ export class NavbarComponent implements OnInit {
     };
 
     getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
-              return this.listTitles[item].title;
-          }
-      }
-      return 'Dashboard';
+      return 'Demo';
     }
 }

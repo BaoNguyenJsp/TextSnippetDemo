@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
         this.data = x.data;
         this.pageSize = x.paging.pageSize;
         this.pageNumber = x.paging.pageNumber;
-        this.query = x.query;
+        this.query = x.paging.query;
         this.disableBeforeButton = x.paging.pageNumber == 0;
         this.disableNextButton = x.total - ((this.pageNumber + 1) * this.pageSize) <= 0;
       }
