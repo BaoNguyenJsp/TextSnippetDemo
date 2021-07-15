@@ -25,7 +25,18 @@ namespace TextSnippetDemo.API
             services.AddCustomAuthentication(Configuration);
             // IoC registration
             services.AddDI();
-            services.AddControllers();
+            // Add global exception filter to handle error globally
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(typeof(HttpExceptionGlobalFilter));
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +48,7 @@ namespace TextSnippetDemo.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("AllowAll");
             app.UseRouting();
 
             app.UseAuthentication();
