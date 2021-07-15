@@ -17,9 +17,9 @@ Demo a simple text snippet feature
 + Sanitizer in Angular
 
 ## Prerequirements
-Install .NET SDK 5.0 or above: https://dotnet.microsoft.com/download/dotnet/5.0
-Install nodejs and npm: https://nodejs.org/en/download/
-Install Angular Cli: 
+  * Install .NET SDK 5.0 or above: https://dotnet.microsoft.com/download/dotnet/5.0.
+  * Install nodejs and npm: https://nodejs.org/en/download/.
+  * Install Angular Cli: 
 ```bash
 $ npm install -g @angular/cli
 ```
