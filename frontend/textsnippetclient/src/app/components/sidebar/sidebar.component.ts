@@ -51,7 +51,7 @@ export class SidebarComponent implements OnInit {
     var paging = {
       query: this.query,
       pageSize: this.pageSize,
-      pageNumber: this.pageNumber
+      pageNumber: 0
     }
     this.dispatcher.fire(new GetPaginationTextSnippetAction(paging));
   }

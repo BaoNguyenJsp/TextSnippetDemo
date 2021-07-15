@@ -50,6 +50,7 @@ namespace TextSnippetDemo.Application.Services
             var pagingIds = ids.Skip(pageSize * pageNumber).Take(pageSize);
 
             var data = await _repository.Query(x => pagingIds.Contains(x.Id))
+                                        .OrderBy(x => x.Title)
                                         .Select(x => new TextSnippetDto
                                         {
                                             Id = x.Id,
