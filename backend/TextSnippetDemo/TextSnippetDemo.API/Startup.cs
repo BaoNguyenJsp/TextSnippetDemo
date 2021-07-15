@@ -21,7 +21,10 @@ namespace TextSnippetDemo.API
         {
             // Use SQL Server as database. The migration will happen in Infra project
             services.AddDatabase(Configuration);
-
+            // Add Identity for authentication and custom policy for role-based authorization
+            services.AddCustomAuthentication(Configuration);
+            // IoC registration
+            services.AddDI();
             services.AddControllers();
         }
 
@@ -37,6 +40,7 @@ namespace TextSnippetDemo.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
