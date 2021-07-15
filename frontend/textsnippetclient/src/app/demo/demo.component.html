@@ -86,7 +86,7 @@
             <form>
               <div class="row">
                 <div class="col-md-12">
-                  <h4 [innerHtml]="content"></h4>
+                  <h4 [innerHtml]="content | customhighlight: query"></h4>
                 </div>
               </div>
             </form>

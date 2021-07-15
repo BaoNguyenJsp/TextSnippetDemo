@@ -10,6 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { DemoComponent } from "app/demo/demo.component";
+import { HightlightTextPipe } from "app/demo/highlight.pipe";
 
 @NgModule({
   imports: [
@@ -25,7 +26,9 @@ import { DemoComponent } from "app/demo/demo.component";
     MatTooltipModule,
   ],
   declarations: [
-    DemoComponent
+    DemoComponent,
+    // Use pipe to highlight text
+    HightlightTextPipe
   ],
 })
 export class AdminLayoutModule {}
