@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TextSnippetDemo.Infra.Data;
 
 namespace TextSnippetDemo.Infra.Migrations
 {
     [DbContext(typeof(TextSnippetDbContext))]
-    partial class TextSnippetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210715083102_migration-2")]
+    partial class migration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

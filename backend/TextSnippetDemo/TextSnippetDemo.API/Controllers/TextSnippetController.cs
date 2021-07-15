@@ -27,9 +27,9 @@ namespace TextSnippetDemo.API.Controllers
 
         [HttpPost]
         [Authorize(Policy = "ADMIN")]
-        public async Task Create([FromBody] TextSnippetViewModel data)
+        public async Task<TextSnippetDto> Create([FromBody] TextSnippetViewModel data)
         {
-            await _service.Create(data);
+            return await _service.Create(data);
         }
 
         [HttpPut("{id}")]

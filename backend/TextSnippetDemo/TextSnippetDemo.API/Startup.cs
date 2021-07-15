@@ -1,8 +1,10 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 using TextSnippetDemo.API.Extensions;
 
 namespace TextSnippetDemo.API
@@ -23,6 +25,10 @@ namespace TextSnippetDemo.API
             services.AddDatabase(Configuration);
             // Add Identity for authentication and custom policy for role-based authorization
             services.AddCustomAuthentication(Configuration);
+            // Add caching to improve performance in searching
+            services.AddCustomCache(Configuration);
+            // Add MediatR to make the structure loosely coupling between main domain and caching
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             // IoC registration
             services.AddDI();
             // Add global exception filter to handle error globally

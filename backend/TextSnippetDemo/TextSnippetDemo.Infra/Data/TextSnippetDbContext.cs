@@ -7,6 +7,7 @@ namespace TextSnippetDemo.Infra.Data
 {
     public class TextSnippetDbContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
     {
+        public DbSet<CacheData> Caches { get; set; }
         public DbSet<TextSnippet> TextSnippets { get; set; }
 
         public TextSnippetDbContext(DbContextOptions options) : base(options)
