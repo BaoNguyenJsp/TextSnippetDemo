@@ -1,0 +1,69 @@
+<div class="logo">
+  <a href="https://www.creative-tim.com" class="simple-text">
+    <div class="logo-img">
+      <img src="/assets/img/angular2-logo-red.png" />
+    </div>
+    Creative Tim
+  </a>
+</div>
+<div class="sidebar-wrapper">
+  <div>
+    <form>
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input
+          type="text"
+          value=""
+          class="form-control"
+          placeholder="Search with title"
+          name="query"
+          [(ngModel)]="query"
+        />
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn btn-white btn-round btn-just-icon"
+          (click)="search()"
+        >
+          <i class="material-icons">search</i>
+          <div class="ripple-container"></div>
+        </button>
+        </div>
+      </span>
+    </form>
+  </div>
+  <ul class="nav">
+    <li style="display: flex">
+      <button
+        mat-raised-button
+        type="button"
+        matTooltip="Before"
+        style="flex: 1"
+        class="btn btn-primary btn-link btn-sm btn-just-icon"
+        [disabled]="disableBeforeButton"
+        (click)="moveBack()"
+      >
+        Back
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        matTooltip="Next"
+        style="flex: 1"
+        class="btn btn-danger btn-link btn-sm btn-just-icon"
+        [disabled]="disableNextButton"
+        (click)="moveNext()"
+      >
+        Next
+      </button>
+    </li>
+    <li
+      routerLinkActive="active"
+      *ngFor="let item of data"
+    >
+      <a class="nav-link" (click)="getSelected(item.id)">
+        <p>{{ item.title }}</p>
+      </a>
+    </li>
+  </ul>
+</div>
