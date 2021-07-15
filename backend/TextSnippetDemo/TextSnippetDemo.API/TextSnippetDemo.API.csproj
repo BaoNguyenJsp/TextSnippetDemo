@@ -15,8 +15,4 @@
     <ProjectReference Include="..\TextSnippetDemo.Application\TextSnippetDemo.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
